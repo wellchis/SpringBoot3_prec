@@ -1,0 +1,32 @@
+spring:
+
+  h2:
+    console:
+      enabled: true
+
+  datasource:
+    url: jdbc:h2:mem:testdb;mode=mysql
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
+      # SessionFactory에서 실행할 때 Drop, Create, Alter, 종료할 때 Drop
+    properties:
+      hibernate:
+        format_sql: true # console에서 sql을 좀 더 편리하게 보기위한
+        show_sql: true
+    defer-datasource-initialization: true
+
+logging:
+  level:
+    me.silvernine.tutorial: DEBUG
+
+jwt:
+  header: Authorization
+  # HS512 방법을 사용해서 Secret Key가 64Byte가 되어야 함
+  secret: c2lsdmVybmluZS10ZWNoLXNwcmluZylib290LWp3dC10dXRvcmlhbC1zZWNyZXQtc2lsdmVybmluZS10ZWNoLXNwcmluZy1ib290LWp3dC10dXRvcmlhbC1zZWNyZXQK
+  token-validity-in-seconds: 86400
